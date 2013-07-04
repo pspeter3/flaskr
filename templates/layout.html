@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flaskr</title>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/foundation/4.2.3/css/foundation.min.css">
+</head>
+<body>
+  <div class="row">
+    <div class="small-12 columns">
+      <h1>Flaskr</h1>
+      {% for message in get_flashed_messages() %}
+        <div class="alert-box">{{ message }}</div>
+      {% endfor %}
+    </div>
+  </div>
+  {% block body %}{% endblock %}
+</body>
+</html>

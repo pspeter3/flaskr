@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% block body %}
+  <div class="row">
+    <div class="small-12 columns">
+      <h2>Login</h2>
+      {% if error %}
+        <div class="alert-box alert">{{ error }}</div>
+      {% endif %}
+      <form action="{{ url_for('login') }}" method=post>
+        <div class="row">
+          <div class="small-12 columns">
+            <div class="row">
+              <div class="small-1 columns">
+                <label for="username" class="right inline">Username</label>
+              </div>
+              <div class="small-11 columns">
+                <input type="text" name="username">
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-1 columns">
+                <label for="password" class="right inline">Password</label>
+              </div>
+              <div class="small-11 columns">
+                <input type="text" name="password">
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 columns">
+                <button class="button right" type="submit">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

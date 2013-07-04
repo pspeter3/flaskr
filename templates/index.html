@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+    <form action="{{ url_for('create') }}" method=post>
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="row">
+            <div class="small-1 columns">
+              <label for="title" class="right inline">Title</label>
+            </div>
+            <div class="small-11 columns">
+              <input type="text" name="title" placeholder="Witty title">
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-1 columns">
+              <label for="text" class="right inline">Text</label>
+            </div>
+            <div class="small-11 columns">
+              <textarea name="text"></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 columns">
+              <button class="button right" type="submit">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  {% endif %}
+  {% for entry in entries %}
+    <div class="row">
+      <div class="small-12 columns">
+        <hr>
+        <h3>{{ entry.title }}</h3>
+        <p>{{ entry.text }}</p>
+      </div>
+    </div>
+  {% else %}
+    <div class="alert-box secondary">No entries so far</div>
+  {% endfor %}
+{% endblock %}

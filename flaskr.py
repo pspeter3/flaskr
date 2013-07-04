@@ -44,7 +44,7 @@ def index():
 def create():
   if not session.get('logged_in'):
     abort(401)
-  g.db.execut('INSERT INTO entries(title, text) VALUES (?, ?)',
+  g.db.execute('INSERT INTO entries(title, text) VALUES (?, ?)',
     [request.form['title'], request.form['text']])
   g.db.commit()
   flash('Created entry')
@@ -54,9 +54,9 @@ def create():
 def login():
   error = None
   if request.method == 'POST':
-    if request.form['username'] != app.config(['USERNAME'])
+    if request.form['username'] != app.config['USERNAME']:
       error = 'Invalid username'
-    elif request.form['password'] != app.config(['PASSWORD'])
+    elif request.form['password'] != app.config['PASSWORD']:
       error = 'Invalid password'
     else:
       session['logged_in'] = True
