@@ -40,5 +40,15 @@ def index():
   entries = [dict(title=row[0], text=row[1]) for row in cursor.fetchall()]
   return render_template('index.html', entries=entries)
 
+@app.route('/', methods=['POST'])
+def create():
+  if not session.get('logged_in'):
+    abort(401)
+  g.db.execut('INSERT INTO entries(title, text) VALUES (?, ?)',
+    [request.form['title'], request.form['text']])
+  g.db.commit()
+  flash('Created entry')
+  return redirect(url_for('index'))
+
 if __name__ == '__main__':
   app.run()
